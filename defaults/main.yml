@@ -14,7 +14,7 @@ storage_path: "/var/backups/{{ ansible_nodename }}"
 repository: "ssh://{{ storage_user }}@{{ storage_host }}:{{ storage_port }}{{ storage_path }}"
 
 # Schedule
-borg_rsh: 'ssh -i /etc/borgmatic/id_rsa'
+borg_rsh: 'ssh -i /etc/borgmatic/id_rsa -o StrictHostKeyChecking=no'
 borgmatic_binary: '/usr/bin/borgmatic'
 calendar: 'daily'
 run_before_job: false
