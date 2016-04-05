@@ -1,0 +1,7 @@
+---
+
+- name: reload systemd
+  command: /usr/bin/systemctl --system daemon-reload
+
+- name: enable timer
+  service: name=borgmatic-backup.timer enabled=yes state=started

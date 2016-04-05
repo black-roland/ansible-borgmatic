@@ -1,10 +1,17 @@
 ---
 
-# client: 'example.com'
+# Backup settings
 source_directories: ['/home', '/usr/local', '/etc']
 # exclude_directories: ['/home/user/Music']
 # encryption_passphrase: 'secret'
+
+# Storage settings
 storage_user: 'borg'
 storage_port: 22
 storage_path: "/var/backups/{{ ansible_nodename }}"
 repository: "ssh://{{ storage_user }}@{{ storage_host }}:{{ storage_port }}{{ storage_path }}"
+
+# Schedule
+borg_rsh: 'ssh -i /etc/borgmatic/id_rsa'
+borgmatic_binary: '/usr/bin/borgmatic'
+calendar: 'daily'

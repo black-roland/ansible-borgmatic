@@ -1,0 +1,8 @@
+[Unit]
+Description=Borgmatic backup
+
+[Service]
+Type=oneshot
+Environment="BORG_RSH={{ borg_rsh }}"
+Environment="BORG_KEYS_DIR=/etc/borgmatic"
+ExecStart={{ borgmatic_binary }} -v 2
