@@ -2,7 +2,7 @@
 
 # Backup settings
 source_directories: ['/home', '/usr/local', '/etc']
-# exclude_directories: ['/home/user/Music']
+exclude_directories: []
 # encryption_passphrase: 'secret'
 
 # Storage settings
