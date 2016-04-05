@@ -1,0 +1,7 @@
+---
+
+- name: Install pip using yum
+  yum: name=python-pip state=latest
+
+- name: Install Borgmatic using pip
+  pip: name=atticmatic

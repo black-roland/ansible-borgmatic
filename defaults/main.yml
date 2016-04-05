@@ -1,5 +1,7 @@
 ---
 
+borgmatic_skip_install: false
+
 # Backup settings
 source_directories: ['/home', '/usr/local', '/etc']
 exclude_directories: []

@@ -1,26 +1,9 @@
 ---
 
-- name: Install Borgmatic
-  pip: name=atticmatic
+- include: install-redhat.yml
+  when: ansible_os_family == 'RedHat' and not borgmatic_skip_install
 
-- name: Update Borgmatic config
-  template: src=config.j2 dest=/etc/borgmatic/config
+- include: install-all.yml
+  when: ansible_os_family != 'RedHat' and not borgmatic_skip_install
 
-- name: Update Borgmatic excludes
-  template: src=excludes.j2 dest=/etc/borgmatic/excludes
-
-- name: Generate SSH key
-  user: name=root generate_ssh_key=yes ssh_key_file=/etc/borgmatic/id_rsa
-
-- name: Store SSH public key
-  fetch: src=/etc/borgmatic/id_rsa.pub dest=keys/{{ ansible_hostname }}.pub flat=yes
-
-- name: Setup systemd service
-  template: src=borgmatic-backup.service.j2 dest=/etc/systemd/system/borgmatic-backup.service
-  notify: reload systemd
-
-- name: Setup systemd timer
-  template: src=borgmatic-backup.timer.j2 dest=/etc/systemd/system/borgmatic-backup.timer
-  notify:
-    - reload systemd
-    - enable timer
+- include: configure.yml
