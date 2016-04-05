@@ -1,0 +1,10 @@
+---
+
+- name: Install Borgmatic
+  pip: name=atticmatic
+
+- name: Update Borgmatic config
+  template: src=config.j2 dest=/etc/borgmatic/config
+
+- name: Update Borgmatic excludes
+  template: src=excludes.j2 dest=/etc/borgmatic/excludes

@@ -1,0 +1,10 @@
+---
+
+# client: 'example.com'
+source_directories: ['/home', '/usr/local', '/etc']
+# exclude_directories: ['/home/user/Music']
+# encryption_passphrase: 'secret'
+storage_user: 'borg'
+storage_port: 22
+storage_path: "/var/backups/{{ ansible_nodename }}"
+repository: "ssh://{{ storage_user }}@{{ storage_host }}:{{ storage_port }}{{ storage_path }}"
