@@ -6,3 +6,7 @@ Description=Run borgmatic-backup.service {{ calendar }}
 
 [Timer]
 OnCalendar={{ calendar }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target
