@@ -8,6 +8,7 @@ Description=Borgmatic backup
 Type=oneshot
 Environment="BORG_RSH={{ borg_rsh }}"
 Environment="BORG_KEYS_DIR=/etc/borgmatic"
+Environment="BORG_RELOCATED_REPO_ACCESS_IS_OK=yes"
 {% if run_before_job %}
 ExecStartPre={{ run_before_job }}
 {% endif %}
